@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { truncate } from '../../utils/helpers'
 import { colors, breakpoints } from '../../styles'
@@ -37,18 +37,21 @@ const NoteList = styled.ul`
   padding: 0;
 `
 
-const NoteListButton = styled.button`
-  appearance: none;
-  background: transparent;
-  border: 0;
+const activeClassName = 'active'
+
+const NoteListLink = styled(NavLink).attrs({ activeClassName })`
+  &.${activeClassName} {
+    color: red;
+  }
+
   color: ${colors.grey};
   cursor: pointer;
+  display: block;
   font-size: 16px;
   overflow: hidden;
   padding: 15px;
-  text-align: left;
   transition: 0.2s ease;
-  width: 100%;
+  text-decoration: none;
 
   &:focus {
     outline: 0;
@@ -63,10 +66,11 @@ const NoteListButton = styled.button`
 class Sidebar extends Component {
   handleClick = note => {
     this.props.actions.setNote(note)
-    this.props.history.push(`/${note.id}`)
   }
 
   render() {
+    console.log(this.props)
+
     return (
       <StyledSidebar>
         <Title to="/">
@@ -82,9 +86,9 @@ class Sidebar extends Component {
         <NoteList>
           {this.props.notes.map(el => (
             <li key={el.id}>
-              <NoteListButton onClick={() => this.handleClick(el)}>
+              <NoteListLink to={el.id} onClick={() => this.handleClick(el)}>
                 {truncate(el.note, 20)}
-              </NoteListButton>
+              </NoteListLink>
             </li>
           ))}
         </NoteList>
@@ -93,4 +97,4 @@ class Sidebar extends Component {
   }
 }
 
-export default withRouter(Sidebar)
+export default Sidebar
