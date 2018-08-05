@@ -42,6 +42,8 @@ const Textarea = styled.textarea`
   }
 `
 
+const validateNote = note => (note ? undefined : true)
+
 class NoteForm extends Component {
   onSubmit = (values, form) => {
     this.props.actions.createNote({
@@ -60,17 +62,18 @@ class NoteForm extends Component {
           initialValues={{
             note: ''
           }}
-          render={({ handleSubmit, form, invalid, pristine, values, reset }) => (
+          render={({ handleSubmit, invalid, pristine }) => (
             <form onSubmit={handleSubmit}>
               <Field
                 name="note"
+                validate={validateNote}
                 render={({ input }) => (
                   <Textarea
                     name="note"
                     cols="30"
                     rows="15"
-                    {...input}
                     placeholder="Scribble away"
+                    {...input}
                   />
                 )}
               />
