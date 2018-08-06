@@ -1,4 +1,4 @@
-import { CREATE_NOTE, SET_NOTE } from '../actions'
+import { CREATE_NOTE, SET_NOTE, DELETE_NOTE } from '../actions'
 
 const initialState = {
   notes: [],
@@ -17,6 +17,12 @@ export default function notes(state = initialState, action) {
       return {
         ...state,
         selectedNote: action.payload
+      }
+
+    case DELETE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id !== action.id)
       }
 
     default:

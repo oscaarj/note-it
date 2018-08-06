@@ -73,6 +73,7 @@ class NoteForm extends Component {
                     cols="30"
                     rows="15"
                     placeholder="Scribble away"
+                    autoFocus
                     {...input}
                   />
                 )}

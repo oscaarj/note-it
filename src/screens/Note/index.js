@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Note from './Note'
 
 const mapStateToProps = state => {
@@ -7,4 +8,13 @@ const mapStateToProps = state => {
   return { note }
 }
 
-export default connect(mapStateToProps)(Note)
+import { deleteNote } from '../../reducer/actions'
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ deleteNote }, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Note)
