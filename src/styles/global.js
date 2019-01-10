@@ -1,6 +1,6 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from "styled-components"
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -23,3 +23,5 @@ injectGlobal`
     font-family: inherit;
   }
 `
+
+export default GlobalStyle
