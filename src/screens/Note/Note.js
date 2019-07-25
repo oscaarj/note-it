@@ -25,7 +25,7 @@ const NoteDelete = styled.button`
 `
 
 class Note extends Component {
-  deleteNote = id => {
+  deleteNote(id) {
     this.props.actions.deleteNote(id)
     this.props.history.push('/')
   }

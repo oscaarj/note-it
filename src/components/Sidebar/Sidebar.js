@@ -64,7 +64,11 @@ const NoteListLink = styled(NavLink).attrs({ activeClassName })`
 `
 
 class Sidebar extends Component {
-  handleClick = note => {
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick(note) {
     this.props.actions.setNote(note)
   }
 

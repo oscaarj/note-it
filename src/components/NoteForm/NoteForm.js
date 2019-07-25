@@ -45,10 +45,16 @@ const Textarea = styled.textarea`
 const validateNote = note => (note ? undefined : true)
 
 class NoteForm extends Component {
-  onSubmit = (values, form) => {
+  constructor(props) {
+    super(props)
+
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  onSubmit(values, form) {
     this.props.actions.createNote({
       ...values,
-      id: generateId()
+      id: generateId(),
     })
 
     setTimeout(() => form.reset(), 200)
@@ -60,7 +66,7 @@ class NoteForm extends Component {
         <Form
           onSubmit={this.onSubmit}
           initialValues={{
-            note: ''
+            note: '',
           }}
           render={({ handleSubmit, invalid, pristine }) => (
             <form onSubmit={handleSubmit}>
@@ -68,14 +74,7 @@ class NoteForm extends Component {
                 name="note"
                 validate={validateNote}
                 render={({ input }) => (
-                  <Textarea
-                    name="note"
-                    cols="30"
-                    rows="15"
-                    placeholder="Scribble away"
-                    autoFocus
-                    {...input}
-                  />
+                  <Textarea name="note" cols="30" rows="15" placeholder="Scribble away" autoFocus {...input} />
                 )}
               />
               <br />
