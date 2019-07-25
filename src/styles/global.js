@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {

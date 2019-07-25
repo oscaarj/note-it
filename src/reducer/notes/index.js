@@ -2,7 +2,7 @@ import { CREATE_NOTE, SET_NOTE, DELETE_NOTE } from '../actions'
 
 const initialState = {
   notes: [],
-  selectedNote: null
+  selectedNote: null,
 }
 
 export default function notes(state = initialState, action) {
@@ -10,19 +10,19 @@ export default function notes(state = initialState, action) {
     case CREATE_NOTE:
       return {
         ...state,
-        notes: state.notes.concat(action.payload)
+        notes: state.notes.concat(action.payload),
       }
 
     case SET_NOTE:
       return {
         ...state,
-        selectedNote: action.payload
+        selectedNote: action.payload,
       }
 
     case DELETE_NOTE:
       return {
         ...state,
-        notes: state.notes.filter(note => note.id !== action.id)
+        notes: state.notes.filter(note => note.id !== action.id),
       }
 
     default:

@@ -5,12 +5,12 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: Main
+    component: Main,
   },
   {
     path: '/:id',
-    component: Note
-  }
+    component: Note,
+  },
 ]
 
 export default routes

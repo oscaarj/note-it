@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 import { deleteNote } from '../../reducer/actions'
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ deleteNote }, dispatch)
+  actions: bindActionCreators({ deleteNote }, dispatch),
 })
 
 export default connect(

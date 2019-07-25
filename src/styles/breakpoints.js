@@ -1,3 +1,3 @@
 export default {
-  medium: '768px'
+  medium: '768px',
 }

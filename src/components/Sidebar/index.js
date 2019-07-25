@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 import { setNote } from '../../reducer/actions'
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ setNote }, dispatch)
+  actions: bindActionCreators({ setNote }, dispatch),
 })
 
 export default connect(
