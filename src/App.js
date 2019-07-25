@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import routes from './routes'
 import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import breakpoints from './styles/breakpoints'
@@ -18,15 +17,17 @@ const NoteItContainer = styled.div`
   }
 `
 
+import Main from './screens/Main'
+import Note from './screens/Note'
+
 const App = () => {
   return (
     <NoteItContainer>
       <Sidebar />
 
       <Switch>
-        {routes.map(({ path, exact, component: Component, ...rest }) => (
-          <Route key={path} path={path} exact={exact} render={props => <Component {...props} {...rest} />} />
-        ))}
+        <Route path="/" component={Main} exact={true} />
+        <Route path="/:id" component={Note} />
       </Switch>
 
       <Footer />
