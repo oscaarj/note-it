@@ -11,12 +11,10 @@ const StyledFooter = styled.footer`
   text-align: center;
 `
 
-const Footer = () => {
-  return (
-    <StyledFooter>
-      <p>a quite useless footer</p>
-    </StyledFooter>
-  )
-}
+const Footer = () => (
+  <StyledFooter>
+    <p>a quite useless footer</p>
+  </StyledFooter>
+)
 
 export default Footer

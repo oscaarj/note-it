@@ -1,5 +1,3 @@
 # NoteIt
 
-As description says; a simple repo where I try out React with Redux, react-router, CSS Grid and styled-components.
-
-Next step: Introduce Redux Saga to overengineer.
+A simple repo for trying out React with ~~Redux~~ **Context**, react-router, CSS Grid and styled-components.

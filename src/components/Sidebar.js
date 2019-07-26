@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { truncate } from '../../utils/helpers'
-import { colors, breakpoints } from '../../styles'
+import { truncate } from '../utils/helpers'
+import { colors, breakpoints } from '../styles'
+import { RootContext } from '../RootContext'
 
 const StyledSidebar = styled.div`
   background: ${colors.yellow};
@@ -63,40 +64,36 @@ const NoteListLink = styled(NavLink).attrs({ activeClassName })`
   }
 `
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props)
+const Sidebar = () => {
+  const { notes, setSelectedNote } = useContext(RootContext)
+
+  const clickNote = id => {
+    setSelectedNote(id)
   }
 
-  handleClick(note) {
-    this.props.actions.setNote(note)
-  }
+  return (
+    <StyledSidebar>
+      <Title to="/">
+        <h1>NoteIt</h1>
+      </Title>
 
-  render() {
-    return (
-      <StyledSidebar>
-        <Title to="/">
-          <h1>NoteIt</h1>
-        </Title>
+      {notes.length === 0 && (
+        <NoNotesMessage>
+          There are no notes <span>😶</span>
+        </NoNotesMessage>
+      )}
 
-        {this.props.notes.length === 0 && (
-          <NoNotesMessage>
-            There are no notes <span>😶</span>
-          </NoNotesMessage>
-        )}
-
-        <NoteList>
-          {this.props.notes.map(el => (
-            <li key={el.id}>
-              <NoteListLink to={el.id} onClick={() => this.handleClick(el)}>
-                {truncate(el.note, 20)}
-              </NoteListLink>
-            </li>
-          ))}
-        </NoteList>
-      </StyledSidebar>
-    )
-  }
+      <NoteList>
+        {notes.map(({ id, note }) => (
+          <li key={id}>
+            <NoteListLink to={id} onClick={() => clickNote(id)}>
+              {truncate(note, 20)}
+            </NoteListLink>
+          </li>
+        ))}
+      </NoteList>
+    </StyledSidebar>
+  )
 }
 
 export default Sidebar
